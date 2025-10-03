@@ -114,7 +114,7 @@ We welcome contributions!
 
 ##  Security
 For responsible disclosure of vulnerabilities, please contact:  
-📧 security@cryptocommerce.com  
+rquidilig@gmail.com  
 
 ---
 
