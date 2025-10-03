@@ -1,0 +1,37 @@
+name: Node CI
+
+on:
+  push: { branches: [ main ] }
+  pull_request: { branches: [ main ] }
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: { node-version: [18.x, 20.x, 22.x] }
+
+    services:
+      mongo:
+        image: mongo:6
+        ports: [ "27017:27017" ]
+        options: >-
+          --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: ${{ matrix.node-version }}, cache: 'npm' }
+      - run: npm ci
+      - run: npm run lint --if-present
+      - run: npm test --if-present
+        env: { MONGO_URI: mongodb://localhost:27017/cryptocommerce_ci }
+      - run: npm run build --if-present
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: build-${{ matrix.node-version }}
+          path: |
+            dist
+            build
+          if-no-files-found: ignore
