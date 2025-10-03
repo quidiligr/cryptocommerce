@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+
+</head>
+
+<body class="theme-color-23">
+
+
+    <!-- header start -->
+    <header>
+        
+        
+        
+    </header>
+    <!-- header end -->
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>Edit billing address</h2>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!--section start-->
+    <section class="login-page section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3></h3>
+                    <div class="theme-card">
+                        <form class="theme-form"  method="post" action="/myaccount/edit-billing-address">
+                            
+                            
+                            <div class="form-group">
+                                <label for="billing_address">Billing Address</label>
+                                <input type="text" class="form-control" id="billing_address" name="billing_address" placeholder="" required="" value="<%= input.address %>">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-solid">Submit</a></button>
+                            <button type="button" onclick="window.history.go(-1); return false;" class="btn btn-solid">Cancel</button>
+                            <% if(input.error && input.error.message) { %>
+                            <div><p style="color: red;"><%= input.error.message %></p></div>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+                <!--
+                <div class="col-lg-6 right-login">
+                    <h3>About Wallets</h3>
+                    <div class="theme-card authentication-right">
+                        <h6 class="title-font"></h6>
+                        <p>If you are a seller, an Ethereum wallet is required for payouts.</p>
+                        <p></p>
+                    </div>
+                </div>
+                -->
+                
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->
+
+
+    <!-- footer start -->
+    <footer class="footer-light">
+        
+    </footer>
+    <!-- footer end -->
+
+
+    <!-- theme setting -->
+    
+    <!-- theme setting -->
+
+
+    <!-- tap to top start -->
+    
+    <!-- tap to top end -->
+
+
+    <!-- latest jquery-->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="/assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/assets/js/lazysizes.min.js"></script>
+
+    <!-- slick js-->
+    <script src="/assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="/assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- Theme js-->
+    <script src="/assets/js/theme-setting.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+   
+</body>
+
+</html>

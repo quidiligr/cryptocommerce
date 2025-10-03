@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+
+</head>
+
+<body class="theme-color-23">
+
+
+    <!-- header start -->
+    <header>
+        
+        
+        
+    </header>
+    <!-- header end -->
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>customer's login</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Shop</a></li>
+                            <li class="breadcrumb-item active">login</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!--section start-->
+    <section class="login-page section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Login</h3>
+                    <div class="theme-card">
+                        <form class="theme-form" method="post" action="/account/login">
+                            <div class="form-group">
+                                <label for="email">Email or Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" value="<%= login.username %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="review">Password</label>
+                                <input type="password" name="password" class="form-control" id="password"
+                                    placeholder="Enter your password" required="" value="<%= login.password %>">
+                            </div>
+                            <button type="submit" class="btn btn-solid">Login</a></button>
+                            <% if(login.error && login.error.message) { %>
+                            <div><p style="color: red;"><%= login.error.message %></p></div>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 right-login">
+                    <h3>New Customer</h3>
+                    <div class="theme-card authentication-right">
+                        <h6 class="title-font">Create A Account</h6>
+                        <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
+                            able to order from our shop. To start shopping click register.</p><a href="/account/register"
+                            class="btn btn-solid">Create an Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->
+
+
+    <!-- footer start -->
+    <footer class="footer-light">
+        
+    </footer>
+    <!-- footer end -->
+
+
+    <!-- theme setting -->
+    
+    <!-- theme setting -->
+
+
+    <!-- tap to top start -->
+    
+    <!-- tap to top end -->
+
+
+    <!-- latest jquery-->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="/assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/assets/js/lazysizes.min.js"></script>
+
+    <!-- slick js-->
+    <script src="/assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="/assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- Theme js-->
+    <script src="/assets/js/theme-setting.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+    
+</body>
+
+</html>

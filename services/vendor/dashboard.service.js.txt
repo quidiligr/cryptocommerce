@@ -1,0 +1,96 @@
+const express = require('express');
+const router = express.Router();
+const crypto = require('crypto')
+const config = require('../config/config')
+
+const path = require('path')
+const util = require('util');
+//const EmailService = require('../services/email.service')
+const {v4:uuid} = require('uuid')
+var fs = require('fs');
+const fsExists = util.promisify(fs.exists)
+const fsMkdir = util.promisify(fs.mkdir)
+
+const monk = require('monk');
+const db = monk(config.kMongoDb)
+const accountTable = db.get('accounts')
+
+const categoryTable = db.get('categories'); 
+const brandTable = db.get('brands');    
+const productsTable = db.get('products');
+//const settingTable = db.get('settings');
+//const productlastidTable = db.get('productlastid');   
+const ordersTable = db.get('orders'); 
+    
+
+function isValidSession(req_body){
+    if(req_body == null || 
+        req_body["session"] == null || 
+        req_body.session["username"] == null ||
+        req_body.session.username.length == 0 
+        
+        ){
+                return false
+    }
+    return true
+}
+
+
+/*
+ var db = req.db;
+    var categoryTable = db.get('categories'); 
+    var brandTable = db.get('brands'); 
+    var ordersTable = db.get('orders');
+    
+    async.parallel([
+        function(callback){
+            categoryTable.find({status: true},{}, function(e, categories){
+                callback(null, categories);
+            });            
+        },
+        function(callback){
+            brandTable.find({status: true},{}, function(e, brands){
+                callback(null, brands);
+            });
+        },
+        function(callback){
+            ordersTable.find({username: req.session.username}, function(e, orders) {
+                callback(null, orders);
+            });
+        }
+    ], 
+    function(err, results) {
+        var data = {categories: results[0], brands: results[1], orders: results[2] };
+        res.render('vendor/dashboard', data);
+    }); 
+*/
+exports.index = async function(req_body){
+    //var db = req.db;
+    if(!isValidSession(req_body)){
+        console.log('31: Invalid session!')
+        return {statusCode:500}
+    }
+    
+    let username = req_body.session.username
+    
+        
+    let categories = await categoryTable.find({status: true})
+
+    let brands = await brandTable.find({status: true})
+
+    let products = await productsTable.find({vendor:username})
+    let orders = await ordersTable.find({vendor:username})
+    
+    if(results == null){
+        results = []
+    }
+
+    
+    var data = {categories: categories, brands: brands, products:products, orders:orders};
+
+    return {statusCode:200,data:data}
+  
+    
+}
+
+

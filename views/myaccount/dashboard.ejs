@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+
+</head>
+
+<body class="theme-color-23">
+     <!-- loader start -->
+     <div class="loader_skeleton">
+        <header class="header-style-5">
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            
+                            <div class="menu-left">
+                            
+                                <div class="brand-logo">
+                                    <a href="/"> <img src="/assets/images/icon/logo.png"
+                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="menu-right pull-right">
+                                <div>
+                                    <nav id="main-nav">
+                                        <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                        <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                            <li>
+                                                <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
+                                                        aria-hidden="true"></i></div>
+                                            </li>
+                                            
+                                            
+                                            <li>
+                                                <a href="/vendor">sell</a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div>
+                                    <div class="icon-nav">
+                                        <ul>
+                                            <li class="onhover-div mobile-search">
+                                                <div><img src="/assets/images/icon/search.png" onclick="openSearch()"
+                                                        class="img-fluid blur-up lazyload" alt="">
+                                                    <i class="ti-search" onclick="openSearch()"></i>
+                                                </div>
+                                                <div id="search-overlay" class="search-overlay">
+                                                    <div>
+                                                        <span class="closebtn" onclick="closeSearch()"
+                                                            title="Close Overlay">×</span>
+                                                        <div class="overlay-content">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-xl-12">
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="exampleInputPassword1"
+                                                                                    placeholder="Search a Product">
+                                                                            </div>
+                                                                            <button type="submit" class="btn btn-primary"><i
+                                                                                    class="fa fa-search"></i></button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="onhover-div mobile-setting">
+                                                <div><img src="/assets/images/icon/setting.png" class="img-fluid blur-up lazyload"
+                                                        alt="">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                <div class="show-div setting">
+                                                    <h6>language</h6>
+                                                    
+                                                    <h6>currency</h6>
+                                                    
+                                                </div>
+                                            </li>
+                                            <li class="onhover-div mobile-cart">
+                                                <div><img src="/assets/images/icon/cart.png" class="img-fluid blur-up lazyload"
+                                                        alt="">
+                                                    <i class="ti-shopping-cart"></i>
+                                                </div>
+                                                <ul class="show-div shopping-cart">
+                                                    
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </header>
+                    <section class="small-section small-slider pt-res-0">
+                        <div class="container">
+                            <div class="home-slider">
+                                <div class="home"></div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+                </div>
+    <!-- loader end -->
+ <!-- header start -->
+ <header>
+    <%- include('../partials/account_header',{menu_categories:menu_categories}); %>
+</header>
+<!-- header end -->
+
+    
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>dashboard</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Shop</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!--  dashboard section start -->
+    <section class="dashboard-section section-b-space user-dashboard-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="dashboard-sidebar">
+                        <div class="profile-top">
+                            <div class="profile-image">
+                                <img src="/assets/images/avtar.jpg" alt="" class="img-fluid">
+                                <!-- div class="box-input-file"><input id="upload1" class="upload" name="upload" type="file"><i class="fa fa-upload"></i></div> -->
+                            </div>
+                            <div class="profile-detail">
+                               
+                                
+                            </div>
+                        </div>
+                        <div class="faq-tab" id="my_menu">
+                            <ul class="nav nav-tabs" id="top-tab" role="tablist">
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyInfo()" id="tab_info" 
+                                        class="nav-link active">Account Info</a></li>
+                                <!-- <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#address"
+                                        class="nav-link">Address Book</a></li> -->
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyProducts()" id="tab_products" class="nav-link">Products</a></li>
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyOrders()" id="tab_orders" class="nav-link">Orders</a></li>
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMySaleOrders()" id="tab_orders_sale" class="nav-link">Orders (Sales)</a></li>
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyOffers()" id="tab_offers" class="nav-link">My Offers</a></li>
+                                
+                                <!-- <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist"
+                                        class="nav-link">My Wishlist</a></li> -->
+                                        <!--
+                                <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#payment"
+                                        class="nav-link">Saved Cards</a></li> -->
+                                
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyWallets()" id="tab_wallets" class="nav-link">My Wallets</a></li>
+                                <% if(user.is_admin) { %>
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getPayouts()" id="tab_payouts" class="nav-link">Payouts</a></li>
+                               <% } %>
+                                <li class="nav-item"><a href="javascript:void(0)" onclick="getMyBusinessProfile()" id="tab_businessprofile" class="nav-link">Business Info</a></li>
+                                <!-- <li class="nav-item"><a href="javascript:void(0)" onclick="getMySecurity0(0)" id="tab_settings" 
+                                        class="nav-link">Security</a> </li> -->
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="faq-content tab-content" id="top-tabContent">
+                        
+                        <div class="tab-pane fade show active" id="mycontent">
+                            
+                        </div>
+                        
+                       
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  dashboard section end -->
+
+
+    <!-- Modal start -->
+    <div class="modal logout-modal fade" id="logout" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Logging Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-dark btn-custom" data-bs-dismiss="modal">no</a>
+                    <a href="/" class="btn btn-solid btn-custom">yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal end -->
+
+    <!--modal popup start-->
+    <div class="modal fade logout-modal" id="addwallet" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div> 
+                                        <h2>wallet address</h2>
+                                        
+                                            <div class="form-group mx-sm-3">
+                                                <form action="/account/add-wallet" method="post">
+                                                    
+                                                <input type="text" class="form-control" name="wallet_address" id="wallet_address"
+                                                    placeholder="Enter your wallet address" required="required">
+                                                <button type="submit" class="btn btn-solid"
+                                                    id="mc-submit">Save</button>
+                                                </form>
+                                            </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal popup end-->
+
+    
+
+    <!-- footer start -->
+    <footer class="footer-light">
+        <%- include('../partials/dashboard_footer'); %>
+
+    </footer>
+    <!-- footer end -->
+
+    <!-- tap to top -->
+    <div class="tap-top">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+    <!-- tap to top End -->
+
+
+    <!-- theme setting -->
+    <div class="theme-settings">
+        <ul>
+            <!--
+            <li class="demo-li">
+                <a href="javascript:void(0)" onclick="openSetting()">
+                    <div class="setting-sidebar" id="setting-icon">
+                        <h5>50+ <br>demo</h5>
+                    </div>
+                </a>
+            </li>
+            
+            <li class="demo-li">
+                <div class="backend-btn"><a target="_blank" href="../back-end//">Admin</a></div>
+            </li>
+            -->
+            <li>
+                <div class="dark-btn">Dark</div>
+            </li>
+            <!--
+            <li>
+                <div class="rtl-btn">RTL</div>
+            </li>
+            
+            <li class="input-picker">
+                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
+            </li>
+            -->
+        </ul>
+    </div>
+    <div class="scroll-setting-box">
+        <div id="setting_box" class="setting-box">
+            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+            <div class="setting_box_body">
+                <div onclick="closeSetting()">
+                    <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back
+                    </div>
+                </div>
+                <div class="setting-body">
+                    <div class="setting-title">
+                        <div>
+                            <img src="/assets/images/icon/logo.png" class="img-fluid" alt="">
+                            <h3>50+ <span>demos</span> <br> suit for any type of online store.</h3>
+                        </div>
+                    </div>
+                    <div class="setting-contant">
+                        <div class="row demo-section">
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+
+
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+
+
+    <!-- latest jquery-->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="/assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/assets/js/lazysizes.min.js"></script>
+
+    <!-- slick js-->
+    <script src="/assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="/assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/vendor/assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="/vendor/assets/js/icons/feather-icon/feather-icon.js"></script>
+
+    
+    <!-- Theme js-->
+    <script src="/assets/js/theme-setting.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+    <!-- touchspin js-->
+    <script src="/vendor/assets/js/touchspin/vendors.min.js"></script>
+    <script src="/vendor/assets/js/touchspin/touchspin.js"></script>
+    <script src="/vendor/assets/js/touchspin/input-groups.min.js"></script>
+
+    <!-- form validation js-->
+    <script src="/vendor/assets/js/dashboard/form-validation-custom.js"></script>
+
+    <!-- ckeditor js-->
+    <script src="/vendor/assets/js/editor/ckeditor/ckeditor.js"></script>
+    <script src="/vendor/assets/js/editor/ckeditor/ckeditor.custom.js"></script>
+
+    <!-- Zoom js-->
+    <script src="/vendor/assets/js/jquery.elevatezoom.js"></script>
+    <script src="/vendor/assets/js/zoom-scripts.js"></script>
+
+    <!--Customizer admin-->
+    <script src="/vendor/assets/js/admin-customizer.js"></script>
+    <!--script admin-->
+    <script src="/vendor/assets/js/admin-script.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            getMyInfo();
+        });
+        function uploadnow(selectedupload){
+            document.getElementById("uploadkey").value = selectedupload;    
+            document.getElementById("uploadform").submit();
+        }
+        document.addEventListener("readystatechange", (event) => {
+        //log.textContent += `readystate: ${document.readyState}\n`;
+        //console.log('91: Ready!')
+        document.getElementById("upload1").onchange = function() {
+            uploadnow("upload1")
+        };
+        document.getElementById("upload2").onchange = function() {
+            uploadnow("upload2")
+        };
+        document.getElementById("upload3").onchange = function() {
+            uploadnow("upload3")
+        };
+        document.getElementById("upload4").onchange = function() {
+            uploadnow("upload4")
+        };
+        document.getElementById("upload5").onchange = function() {
+            uploadnow("upload5")
+        };
+        document.getElementById("upload6").onchange = function() {
+            uploadnow("upload6")
+        };
+       
+        });
+        
+        
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+        function getMyProducts(){
+            
+            console.log(`1081: getMyProducts()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-products',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_products').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function addProduct(){
+            
+            console.log(`1081: addProduct()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/add-product',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`data= ${JSON.stringify(data,null,4)}}`);
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_products').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function editProduct(id){
+            
+            console.log(`1081: editProduct()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/edit-product',
+            contentType : "application/json",
+            data : JSON.stringify({id:id}),
+            success: function(data) {
+                console.log(`data= ${JSON.stringify(data,null,4)}}`);
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_products').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function removeProduct(id){
+            
+            console.log(`1081: removeProduct()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/remove-product',
+            contentType : "application/json",
+            data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`data= ${JSON.stringify(data,null,4)}}`);
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_products').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getMyOrders(){
+            
+            console.log(`1081: getMyOrders()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-orders',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_orders').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getPayouts(){
+            
+            console.log(`1081: getPayouts()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-payouts',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_payouts').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+
+        function getMySaleOrders(){
+            
+            console.log(`1081: getMyOrders()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-sale-orders',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.nav-link').removeClass('active');
+                $('#tab_orders').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getMyOffers(){
+            
+            console.log(`1081: getMyOffers()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-offers',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+               
+                $('.nav-link').removeClass('active');
+                $('#tab_offers').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getMyInfo(){
+            
+            console.log(`763: getMyInfo()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-info',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`data= ${JSON.stringify(data,null,4)}}`);
+                //console.log(`771: getMyInfo() success`);
+                $('.nav-link').removeClass('active');
+                $('#tab_info').addClass('active');
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getMyWallets(){
+            
+            console.log(`1081: getMyWallets()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-wallets',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                $('.nav-link').removeClass('active');
+                $('#tab_wallets').addClass('active');
+                
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function getMyBusinessProfile(){
+            
+            console.log(`1081: getMyBusinessProfile()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-business-profile',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                $('.nav-link').removeClass('active');
+                $('#tab_businessprofile').addClass('active');
+                
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+        function getMySettings(){
+            
+            console.log(`1081: getMySecurity()`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/get-my-settings',
+            contentType : "application/json",
+            //data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                $('.nav-link').removeClass('active');
+                $('#tab_settings').addClass('active');
+                
+                $('#mycontent').html(data.html);
+            }
+            });
+        }
+
+        function romRemoveWallet(id){
+            
+            console.log(`1081: romRemoveWallet(id= ${id}}`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/remove-wallet',
+            contentType : "application/json",
+            data : JSON.stringify({id:id}),
+            success: function(data) {
+                //console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.mobile-cart').html(data.html);
+            }
+            });
+        }
+        function romSaveWallet(id,address,is_default){
+            
+            //console.log(`1081: romRemoveFromCart(id= ${index}}`)
+            $.ajax({
+            type: 'POST',
+            url: '/api/save-wallet',
+            contentType : "application/json",
+            data : JSON.stringify({id:id,address:address,is_default:is_default}),
+            success: function(data) {
+                console.log(`1088: success romRemoveFromCart(index= ${index}}`)
+                
+                $('.mobile-cart').html(data.html);
+            }
+            });
+        }
+    </script>
+</body>
+
+</html>

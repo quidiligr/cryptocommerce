@@ -1,0 +1,50 @@
+stages:
+  - install
+  - test
+  - build
+
+image: node:20
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+
+variables:
+  NODE_ENV: test
+
+install:
+  stage: install
+  script:
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1h
+
+test:
+  stage: test
+  needs: ["install"]
+  services:
+    - name: mongo:6
+      alias: mongo
+  variables:
+    MONGO_URI: "mongodb://mongo:27017/cryptocommerce_ci"
+  script:
+    - node -v
+    - npm -v
+    - npm run lint --if-present
+    - npm test --if-present
+
+build:
+  stage: build
+  needs: ["test"]
+  script:
+    - npm run build --if-present
+  artifacts:
+    paths:
+      - dist/
+      - build/
+    expire_in: 1 week

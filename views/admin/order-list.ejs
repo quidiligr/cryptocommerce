@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+
+        <!-- Page Header Start-->
+        <div class="page-main-header">
+            <%- include('./partials/header'); %>
+        </div>
+        <!-- Page Header Ends -->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+
+            <!-- Page Sidebar Start-->
+            <div class="page-sidebar">
+                <%- include('./partials/page-sidebar'); %>
+            </div>
+            <!-- Page Sidebar Ends-->
+
+            <!-- Right sidebar Start-->
+            <div class="right-sidebar" id="right_side_bar">
+                <%- include('./partials/right-sidebar'); %>
+            </div>
+            <!-- Right sidebar Ends-->
+
+            <div class="page-body">
+                <!-- Container-fluid starts-->
+                <div class="container-fluid">
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="page-header-left">
+                                    <h3>Order List
+                                        <small>Cryptibuy Admin panel</small>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ol class="breadcrumb pull-right">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html">
+                                            <i data-feather="home"></i>
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item">Menus</li>
+                                    <li class="breadcrumb-item active">Order List</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+
+                <!-- Container-fluid starts-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <form class="form-inline search-form search-box">
+                                        <div class="form-group">
+                                            <input class="form-control-plaintext" type="search" placeholder="Search..">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive table-desi">
+                                        <table class="table all-package" id="editableTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order Image</th>
+                                                   <th>Order Code</th>
+                                                    <th>Date</th>
+                                                    <!-- <th>Payment Method</th> -->
+                                                    <th>Delivery Status</th>
+                                                    <th>Amount</th>
+                                                    <th>Option</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <% for(p of products) { %>
+                                                <tr>
+                                                    <td>
+                                                        <img src="<%= p.photo %>" alt="users">
+                                                    </td>
+
+                                                    <td data-field="number"><%= p.id %></td>
+
+                                                    <td data-field="date"><%= p.order_date_str %></td>
+
+                                                   <!-- <td data-field="text">Metamask</td> -->
+
+                                                    <td class="order-success">
+                                                        <span><%= p.shipping.status == '' ? 'Pending': p.shipping.status %></span>
+                                                    </td>
+
+                                                    <td data-field="number"><span><%= p.price.currency.symbol %><%= p.price.amount %></span> <span></span> <span style="color: cornflowerblue;">≈<%= p.price.eth.amount.toFixed(6) %> ETH</span> </td>
+
+                                                    <td>
+                                                        <!--
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-edit" title="Edit"></i>
+                                                        </a>
+
+                                                        <a href="javascript:void(0)">
+                                                            <i class="fa fa-trash" title="Delete"></i>
+                                                        </a>
+                                                    -->
+                                                    <% if(p.shipping.status == 'Shipped') { %>
+                                                    <a href="javascript:{}" onclick="paynow(this);" data-bs-toggle="modal" data-bs-target="#quick-view"  class="btn-solid btn">Payout</a>
+                                                    <% } %>
+                                                </td>
+                                                </tr>
+                                                <% } %>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+            </div>
+
+            <!-- footer start-->
+            <footer class="footer">
+                <%- include('./partials/footer'); %>
+            </footer>
+            <!-- footer end-->
+        </div>
+    </div>
+
+    <!-- latest jquery-->
+    <script src="/vendor/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/vendor/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/vendor/assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="/vendor/assets/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- Sidebar jquery-->
+    <script src="/vendor/assets/js/sidebar-menu.js"></script>
+
+    <!-- Edit, delete and add new -->
+    <script src="/vendor/assets/js/edit-delete-new-product.js"></script>
+
+    <!--Customizer admin-->
+    <script src="/vendor/assets/js/admin-customizer.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/vendor/assets/js/lazysizes.min.js"></script>
+
+    <!--right sidebar js-->
+    <script src="/vendor/assets/js/chat-menu.js"></script>
+
+    <!--script admin-->
+    <script src="/vendor/assets/js/admin-script.js"></script>
+
+    <script src="/assets/js/rom/wallet.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+const express = require('express');
+const router = express.Router();
+const crypto = require('crypto')
+const config = require('../config/config')
+
+const path = require('path')
+const util = require('util');
+//const EmailService = require('../services/email.service')
+const {v4:uuid} = require('uuid')
+var fs = require('fs');
+const fsExists = util.promisify(fs.exists)
+const fsMkdir = util.promisify(fs.mkdir)
+
+const monk = require('monk');
+const db = monk(config.kMongoDb)
+const accountTable = db.get('accounts')
+
+const categoryTable = db.get('categories'); 
+const brandTable = db.get('brands');    
+const productTable = db.get('products');
+const settingTable = db.get('settings');
+const productlastidTable = db.get('productlastid');   
+    
+
+function isValidSession(req_body){
+    if(req_body == null || 
+        req_body["session"] == null || 
+        req_body.session["username"] == null ||
+        req_body.session.username.length == 0 
+        
+        ){
+                return false
+    }
+    return true
+}
+
+
+/*
+ var db = req.db;
+    var productTable = db.get('products'); 
+    var brandTable = db.get('brands'); 
+    productTable.find({}, {}, function(error, result){
+        //res.render('admin/product/index', {products: result, currentUrl:'product'});
+        res.render('vendor/product-list', {products: result, currentUrl:'product'});
+    });     
+*/
+exports.products = async function(req_body){
+    //var db = req.db;
+    if(!isValidSession(req_body)){
+        console.log('31: Invalid session!')
+        return {statusCode:500}
+    }
+    
+    let username = req_body.session.username
+    
+        
+    let categories = await categoryTable.find({status: true})
+
+    let brands = await brandTable.find({status: true})
+
+    let products = await productTable.find({vendor:username})
+        
+    
+    if(results == null){
+        results = []
+    }
+
+    
+    var data = {categories: categories, brands: brands, products:products};
+
+    return data
+  
+    
+}
+
+
+exports.add_product = async function(req_body){
+    //var db = req.db;
+    if(!isValidSession(req_body)){
+        console.log('31: Invalid session!')
+        return {statusCode:500}
+    }
+    
+    let username = req_body.session.username
+    let results = []
+        
+    let categories = await categoryTable.find({status: true})
+
+    let brands = await brandTable.find({status: true})
+
+    lastid= 0
+    let resultlastid = await productlastidTable.findOne({username: username})
+    if(resultlastid == null || resultlastid['productid'] == null){
+        lastid = 1
+        await productlastidTable.insert({username:username, productid:lastid})
+    }
+    if(resultlastid && resultlastid['id'] != null && resultlastid.id > 0){
+        lastid = resultlastid.id + 1
+        await productlastidTable.update({username:username},{$set:{productid:lastid}})
+    }
+
+    
+    
+    
+        var created = dateTime.create().format('YmdHMS')
+        
+        
+        
+        var product = {
+                id: lastid, 
+                guid: uuidv4(),
+                created: created,
+                
+                name: req.body.name, 
+                price: parseFloat(req.body.price), 
+                quantity: parseInt(req.body.quantity), 
+                description: req.body.description,      
+                photo: "https://cryptibuy3.romnix.com/vendor/assets/images/pro3/1.jpg", 
+                special: req.body.special == 'true',
+                views: 0,
+                categoryId: req.body.categoryId,
+                status: req.body.status == 'true',
+                brandId: req.body.brandId
+            };
+        await productTable.insert(product)
+
+        return {statusCode:200, data: product}
+            
+        
+  
+    
+}
+
+exports.update = async function(req) { 
+    if(!isValidSession(req_body)){
+        console.log('31: Invalid session!')
+        return {statusCode:500}
+    }
+    
+    let username = req_body.session.username
+
+    if(req.body == null && req.body["guid"] == null){
+    
+       
+        console.log(`Product guid is missing!`)
+        return {statusCode:500}
+        
+        
+    } 
+    let existing_product = await productTable.find({guid:req.body.guid})
+    if(existing_product = null ||  existing_product['guid'] == null){
+        
+        console.log(`Product ${req.body.guid} DOES NOT exists!`)
+        return {statusCode:500}
+    }
+    
+        let photo = `${config.kRootUrl}/vendor/assets/images/pro3/1.jpg`
+        if(req.files && req.files.photo != null) {
+            try{
+            
+                //console.log(`\r\n\r\n\r\n25: --------------------------`)
+                console.log(`\r\n\r\n 134: req.files.photo OK`)
+                
+                //check valid
+                let filename = req.files.photo.name
+                console.log(`\r\n\r\n 134: filename= ${filename}`)
+
+                let extname = path.extname(filename)
+                console.log(`\r\n\r\n ---------------------\r\n31: req.files.photo extname = ${extname}`)
+                extnames = '.jpg .png .gif .jpeg'
+                //if(extname in ['.jpg','.png','.gif','.jpeg']){
+                if(extnames.includes(extname)){
+                    console.log(`\r\n\r\n 31: req.files.photo extname ${extname} OK`)
+                
+                    var userDir = path.join(`./public/images/${username}`)
+                    if (! await fsExists(userDir)){
+                    console.log(`\r\n ${userDir} does not exists. Attempt to create.\r\n`)
+                        await fsMkdir(userDir);
+                    }
+                    else{
+                    console.log(`\r\n ${userDir} exists!\r\n`)
+                    }
+                
+                    let mv = util.promisify(req.files.photo.mv)
+                    let mv_result = await mv(path.join(`${userDir}/`,  filename))
+                    console.log(`\r\n\r\n\r\n >>>>>>>>>> 33: post /edit mv_result= ${mv_result} \r\n\r\n\r\n`)
+
+                    photo = `${config.kRootUrl}/uploads/images/${username}/${filename}`                    
+                    
+                }
+            }
+            catch(err) {
+                if (err)
+                    console.log('185: Photo upload failed!')
+                
+            }          
+        }
+        
+        var updated = dateTime.create().format('YmdHMS');
+        
+        
+        await productTable.update({guid:existing_product.guid},{$set:{
+        
+            name: req.body.name, 
+                price: parseFloat(req.body.price), 
+                quantity: parseInt(req.body.quantity), 
+                description: req.body.description,      
+                photo: photo, 
+                special: req.body.special == 'true',
+                views: 0,
+                categoryId: req.body.categoryId,
+                status: req.body.status == 'true',
+                brandId: req.body.brandId
+            }
+        
+            })
+
+        res.redirect(`/vendor/product/edit/${existing_product.guid}`);
+        
+            
+}

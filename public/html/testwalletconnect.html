@@ -1,0 +1,111 @@
+<html>
+   <head>
+      <title>Connect to crypto wallet</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+ </head>
+<body>
+<script>
+/* To connect using MetaMask */
+var walletAddress = "";
+async function connect() {
+    walletAddress = "";
+
+  if (window.ethereum) {
+     await window.ethereum.request({ method: "eth_requestAccounts" });
+     window.web3 = new Web3(window.ethereum);
+     const account = web3.eth.accounts;
+     
+     //Get the current MetaMask selected/active wallet
+     //const walletAddress = account.givenProvider.selectedAddress;
+     walletAddress = account.givenProvider.selectedAddress;
+
+     console.log(`Wallet: ${walletAddress}`);
+     
+     document.getElementById("p_address").innerHTML = walletAddress;
+
+     
+  
+  } else {
+   console.log("No wallet");
+   document.getElementById("p_address").innerHTML = "No wallet";
+   //document.getElementById("hid_address").value = walletAddress;
+  }
+}
+
+async function charge_test(amount){
+    // using the promise
+    /*web3.eth.sendTransaction({
+        from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+        to: '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe',
+        value: '1000000000000000'
+    })
+    .then(function(receipt){
+        ...
+    });
+    */
+    //const hash = await web3.eth.sendRawTransaction('0x' + serializedTx.toString('hex'))
+    console.log(`charge start...`);
+    //walletAddress = '0x53243d953c844ac6ddf847346c84e6f8cd1d6856';//document.getElementById("hid_address").value;
+
+    console.log(`47: wallet= ${walletAddress}`);
+    if(walletAddress && walletAddress.length >= 12){
+        console.log(`wallet is valid ${walletAddress}`);
+        const hash = await web3.eth.sendTransaction({
+            from: walletAddress,
+            to: '0x3Ad54CcC9AD0FE8b6bA9168D59C7fB36e220571D',
+            value: '1000000000000000'
+        });
+        console.log(`54: hash= ${hash}`);
+        //conosle.log("after aync await..");
+    }
+    else{
+        console.log(`Invalid wallet ${walletAddress}`);
+    }
+
+}
+
+async function charge(buyer,seller,amount){
+    // using the promise
+    /*web3.eth.sendTransaction({
+        from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+        to: '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe',
+        value: '1000000000000000'
+    })
+    .then(function(receipt){
+        ...
+    });
+    */
+    //const hash = await web3.eth.sendRawTransaction('0x' + serializedTx.toString('hex'))
+
+    amount = parseFloat(amount);
+
+    if(amount <= 0){
+        console.log('Invalid amount!');
+        return;
+    }
+    console.log(`charge start...`);
+    //walletAddress = '0x53243d953c844ac6ddf847346c84e6f8cd1d6856';//document.getElementById("hid_address").value;
+
+    console.log(`47: wallet= ${walletAddress}`);
+    if(walletAddress && walletAddress.length >= 12){
+        console.log(`wallet is valid ${walletAddress}`);
+        const hash = await web3.eth.sendTransaction({
+            from: buyer,//walletAddress,
+            to: seller,//'0x3Ad54CcC9AD0FE8b6bA9168D59C7fB36e220571D',
+            value: `${amount * Math.pow(10, 18)}` //'1000000000000000'
+        });
+        console.log(`54: hash= ${hash}`);
+        //conosle.log("after aync await..");
+    }
+    else{
+        console.log(`Invalid wallet ${walletAddress}`);
+    }
+
+}
+</script>
+<!-- <input type="hidden" id="hid_address" value=""> -->
+<div><input type="button" value="Connect Wallet" onclick="connect();"><p id="p_address"></p></div>
+<div><input type="number" id="amount" value="0"> <input type="button" value="Pay" onclick="charge(walletAddress, '0x3Ad54CcC9AD0FE8b6bA9168D59C7fB36e220571D',document.getElementById('amount').value);"></div>
+
+</body>
+</html>

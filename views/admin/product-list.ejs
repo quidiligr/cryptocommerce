@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head'); %>
+
+</head>
+
+<body>
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+
+        <!-- Page Header Start-->
+        <div class="page-main-header">
+            <%- include('./partials/header'); %>
+        </div>
+        <!-- Page Header Ends -->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+
+            <!-- Page Sidebar Start-->
+            <div class="page-sidebar">
+                <%- include('./partials/page-sidebar'); %>
+            </div>
+            <!-- Page Sidebar Ends-->
+
+            <!-- Right sidebar Start-->
+            <div class="right-sidebar" id="right_side_bar">
+                <%- include('./partials/right-sidebar'); %>
+            </div>
+            <!-- Right sidebar Ends-->
+
+            <div class="page-body">
+                <!-- <p><%= JSON.stringify(products,null,4) %></p> -->
+                <%- include('./partials/page-body-product-list',{products:products}); %>
+            </div>
+
+            <!-- footer start-->
+            <footer class="footer">
+                <%- include('./partials/footer'); %>
+            </footer>
+            <!-- footer end-->
+        </div>
+    </div>
+
+    <!-- latest jquery-->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="assets/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- Sidebar jquery-->
+    <script src="assets/js/sidebar-menu.js"></script>
+
+    <!--Customizer admin-->
+    <script src="assets/js/admin-customizer.js"></script>
+
+    <!-- lazyload js-->
+    <script src="assets/js/lazysizes.min.js"></script>
+
+    <!--right sidebar js-->
+    <script src="assets/js/chat-menu.js"></script>
+
+    <!--script admin-->
+    <script src="assets/js/admin-script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head-edit-product'); %>
+</head>
+
+<body>
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper">
+
+        <!-- Page Header Start-->
+        <div class="page-main-header">
+            <%- include('./partials/header'); %>
+            
+        </div>
+        <!-- Page Header Ends -->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+
+            <!-- Page Sidebar Start-->
+            <div class="page-sidebar">
+                <%- include('./partials/page-sidebar'); %>
+                
+            </div>
+            <!-- Page Sidebar Ends-->
+
+            <!-- Right sidebar Start-->
+            <div class="right-sidebar" id="right_side_bar">
+                <%- include('./partials/right-sidebar'); %>
+            </div>
+            <!-- Right sidebar Ends-->
+
+            <div class="page-body">
+                <%- include('./partials/page-body-edit-product'); %>
+            </div>
+
+            <!-- footer start-->
+            <footer class="footer">
+                <%- include('./partials/footer'); %>
+            </footer>
+            <!-- footer end-->
+        </div>
+    </div>
+
+    <!-- latest jquery-->
+    <script src="/vendor/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/vendor/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/vendor/assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="/vendor/assets/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- Sidebar jquery-->
+    <script src="/vendor/assets/js/sidebar-menu.js"></script>
+
+    <!-- touchspin js-->
+    <script src="/vendor/assets/js/touchspin/vendors.min.js"></script>
+    <script src="/vendor/assets/js/touchspin/touchspin.js"></script>
+    <script src="/vendor/assets/js/touchspin/input-groups.min.js"></script>
+
+    <!-- form validation js-->
+    <script src="/vendor/assets/js/dashboard/form-validation-custom.js"></script>
+
+    <!-- ckeditor js-->
+    <script src="/vendor/assets/js/editor/ckeditor/ckeditor.js"></script>
+    <script src="/vendor/assets/js/editor/ckeditor/ckeditor.custom.js"></script>
+
+    <!-- Zoom js-->
+    <script src="/vendor/assets/js/jquery.elevatezoom.js"></script>
+    <script src="/vendor/assets/js/zoom-scripts.js"></script>
+
+    <!--Customizer admin-->
+    <script src="/vendor/assets/js/admin-customizer.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/vendor/assets/js/lazysizes.min.js"></script>
+
+    <!--right sidebar js-->
+    <script src="/vendor/assets/js/chat-menu.js"></script>
+
+    <!--script admin-->
+    <script src="/vendor/assets/js/admin-script.js"></script>
+    <script>
+        function uploadnow(selectedupload){
+            document.getElementById("uploadkey").value = selectedupload;    
+            document.getElementById("uploadform").submit();
+        }
+        document.addEventListener("readystatechange", (event) => {
+        //log.textContent += `readystate: ${document.readyState}\n`;
+        //console.log('91: Ready!')
+        document.getElementById("upload1").onchange = function() {
+            uploadnow("upload1")
+        };
+        document.getElementById("upload2").onchange = function() {
+            uploadnow("upload2")
+        };
+        document.getElementById("upload3").onchange = function() {
+            uploadnow("upload3")
+        };
+        document.getElementById("upload4").onchange = function() {
+            uploadnow("upload4")
+        };
+        document.getElementById("upload5").onchange = function() {
+            uploadnow("upload5")
+        };
+        document.getElementById("upload6").onchange = function() {
+            uploadnow("upload6")
+        };
+       
+        });
+        
+    </script>
+</body>
+
+</html>

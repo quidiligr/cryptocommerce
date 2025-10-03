@@ -1,0 +1,49 @@
+<script src="/node_modules/@metamask/sdk/dist/browser/iife/metamask-sdk.js"></script>
+<script>
+  //var url =
+  //console.log(`window.location.host=${window.location.host}`);
+  const sdk = new MetaMaskSDK.MetaMaskSDK({
+    dappMetadata: {
+      name: "Pure JS example",
+      url: `https://${window.location.host}`,
+    },
+    logging: {
+      sdk: false,
+    }
+  });
+  console.log('14: MetaMaskSDK init.');
+</script>
+<script>
+  let provider;
+
+  function connect() {
+    console.log('19: Connecting...')
+    sdk.connect()
+      .then((res) => {
+        provider = sdk.getProvider();
+        console.log('22: Metamask Connected!')
+      })
+      .catch((e) => console.log('request accounts ERR', e));
+  }
+
+  function addEthereumChain() {
+    provider
+      .request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: '0x89',
+            chainName: 'Polygon',
+            blockExplorerUrls: ['https://polygonscan.com'],
+            nativeCurrency: { symbol: 'MATIC', decimals: 18 },
+            rpcUrls: ['https://polygon-rpc.com/'],
+          },
+        ],
+      })
+      .then((res) => console.log('add', res))
+      .catch((e) => console.log('ADD ERR', e));
+  }
+</script>
+<button onclick="connect()">Connect</button>
+
+<button onclick="addEthereumChain()">ADD ETHEREUM CHAIN</button>

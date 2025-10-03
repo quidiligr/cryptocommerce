@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+
+
+</head>
+
+<body class="theme-color-1">
+
+
+    <!-- header start -->
+    <header>
+        <%- include('../partials/account_header',{menu_categories:menu_categories}); %>
+    </header>
+    <!-- header end -->
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>order tracking</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Shop</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">order tracking</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!-- tracking page start -->
+    <section class="tracking-page section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>status for order no: <%= order.id %></h3>
+                    <div class="row border-part">
+                        <div class="col-xl-2 col-md-3 col-sm-4">
+                            <div class="product-detail">
+                                <img src="../assets/images/fashion/pro/1.jpg" class="img-fluid blur-up lazyload" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5 col-sm-8">
+                            <div class="tracking-detail">
+                                <ul>
+                                    <li>
+                                        <div class="left">
+                                            <span>Order name</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.name %></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>customer number</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.customer.cust_number %></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>order date</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.order_date %></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>Ship Date</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.shipping.expected_delivery %></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>shipping address</span>
+                                        </div>
+                                        <div class="right">
+                                            <!-- <span>2253 Short Street <br>Austin, TX<br>Texas, 78701</span> -->
+                                            <span><%= order.shipping.address.address %></span> 
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>carrier</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.shipping.carrier %></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <span>carrier tracking number</span>
+                                        </div>
+                                        <div class="right">
+                                            <span><%= order.shipping.carrier_tracking_number %></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-4">
+                            <div class="order-map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55107.59629446948!2d-97.77629221286301!3d30.316123884942762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644ca7d7a2a6d0d%3A0x209a4c2782a39461!2sCentral%20Market!5e0!3m2!1sen!2sin!4v1607754725548!5m2!1sen!2sin"
+                                    frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="arrow-steps clearfix">
+                            <div class="step done"> <span> order placed</span> </div>
+                            <div class="step current"> <span>preparing to ship</span> </div>
+                            <div class="step"><span> shipped</span> </div>
+                            <div class="step"><span>delivered</span> </div>
+                        </div>
+                    </div>
+                    <div class="order-table table-responsive-sm">
+                        <table class="table mb-0 table-striped table-borderless">
+                            <thead class="">
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20 Nov 2024</td>
+                                    <td>12.00 AM</td>
+                                    <td>shipped</td>
+                                    <td>california</td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2024</td>
+                                    <td>12.00 AM</td>
+                                    <td>shipping info received</td>
+                                    <td>california</td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2024</td>
+                                    <td>12.00 AM</td>
+                                    <td>origin scan</td>
+                                    <td>california</td>
+                                </tr>
+                                <tr>
+                                    <td>20 Nov 2024</td>
+                                    <td>12.00 AM</td>
+                                    <td>shipping info received</td>
+                                    <td>california</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- tracking page end -->
+
+
+    <!-- footer start -->
+    <footer class="footer-light">
+        <div class="light-layout">
+            <div class="container">
+                <section class="small-section border-section border-top-0">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="subscribe">
+                                <div>
+                                    <h4>KNOW IT ALL FIRST!</h4>
+                                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <form
+                                action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+                                class="form-inline subscribe-form auth-form needs-validation" method="post"
+                                id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                                <div class="form-group mx-sm-3"><input type="text" class="form-control" name="EMAIL"
+                                        id="mce-EMAIL" placeholder="Enter your email" required="required"></div>
+                                <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <section class="section-b-space light-layout">
+            <div class="container">
+                <div class="row footer-theme partition-f">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>about</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <div class="footer-logo"><img src="../assets/images/icon/logo.png" alt=""></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col offset-xl-1">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>my account</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul>
+                                    <li><a href="#">mens</a></li>
+                                    <li><a href="#">womens</a></li>
+                                    <li><a href="#">clothing</a></li>
+                                    <li><a href="#">accessories</a></li>
+                                    <li><a href="#">featured</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>why we choose</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul>
+                                    <li><a href="#">shipping & return</a></li>
+                                    <li><a href="#">secure shopping</a></li>
+                                    <li><a href="#">gallary</a></li>
+                                    <li><a href="#">affiliates</a></li>
+                                    <li><a href="#">contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>store information</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul class="contact-list">
+                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India
+                                        345-659</li>
+                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
+                                    <li><i class="fa fa-envelope"></i>Email Us: Support@Multikart.com</li>
+                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="footer-end">
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2023-24 themeforest powered by
+                                pixelstrap</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="payment-card-bottom">
+                            <ul>
+                                <li><a href="#"><img src="../assets/images/icon/visa.png" alt=""></a></li>
+                                <li><a href="#"><img src="../assets/images/icon/mastercard.png" alt=""></a></li>
+                                <li><a href="#"><img src="../assets/images/icon/paypal.png" alt=""></a></li>
+                                <li><a href="#"><img src="../assets/images/icon/american-express.png" alt=""></a></li>
+                                <li><a href="#"><img src="../assets/images/icon/discover.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+    <!-- theme setting -->
+    <div class="theme-settings">
+        <ul>
+           
+                <div class="dark-btn">Dark</div>
+            </li>
+            <li>
+                <div class="rtl-btn">RTL</div>
+            </li>
+            <li class="input-picker">
+                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
+            </li>
+        </ul>
+    </div>
+    <div class="scroll-setting-box">
+        <div id="setting_box" class="setting-box">
+            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+            <div class="setting_box_body">
+                <div onclick="closeSetting()">
+                    <div class="sidebar-back text-start"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back
+                    </div>
+                </div>
+                <div class="setting-body">
+                    <div class="setting-title">
+                        <div>
+                            <img src="../assets/images/icon/logo.png" class="img-fluid" alt="">
+                            <h3>50+ <span>demos</span> <br> suit for any type of online store.</h3>
+                        </div>
+                    </div>
+                    <div class="setting-contant">
+                        <div class="row demo-section">
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+
+
+    <!-- tap to top -->
+    <div class="tap-top">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+    <!-- tap to top End -->
+
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="../assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- slick js-->
+    <script src="../assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="../assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- Theme js-->
+    <script src="../assets/js/theme-setting.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
