@@ -2,11 +2,11 @@
 
 module.exports = {
 
-    kMongoDb:'mongodb://mongodb:27017/cryptibuydb',
- kRootUrl: 'https://cryptibuy3.romnix.com',
+    kMongoDb:'mongodb://mongodb:27017/cryptocommercedb',
+ kRootUrl: 'https://www.yourdomain.com',
  guest_user :{
     username:'guest',
-    email:'guest@cryptibuy.com',
+    email:'guest@yourdomain.com',
     roleId:'guest',
     name: 'Guest',
     currency: 'USD',
@@ -18,7 +18,7 @@ module.exports = {
 
 default_customer :{
     name:'guest',
-    email:'guest@cryptibuy.com',
+    email:'guest@yourdomain.com',
     phone:'+1(310)1234-4567',
     shipping_address:{
         address : "",
