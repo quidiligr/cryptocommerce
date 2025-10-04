@@ -103,11 +103,11 @@ country: [
     'Netherlands',
     'South Africa'
 ],
-seller_wallet: '0x3Ad54CcC9AD0FE8b6bA9168D59C7fB36e220571D',
-master_pwd: 'walter2024!',
-notify_from_email: 'cryptibuy2024@gmail.com',
+seller_wallet: '0x3Ad54CcC9AD0FE8b...',
+master_pwd: 'your master passwword!',
+notify_from_email: 'test@gmail.com',
 error_processing: 'There was an error processing your request. Please try again later',
-google_api_key: 'AIzaSyCT0jWycJ--pE4_dqzvdgMEoePcqgRA3TE'
+google_api_key: 'your api key'
 
 
 
