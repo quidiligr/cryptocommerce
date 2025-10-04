@@ -32,34 +32,10 @@ default_customer :{
     
 },
 
-/*
-{
-    "rawAddress": "150 Las Vegas Blvd N Unit 1200, Las Vegas, 89101, NV ",
-    "address": "150 Las Vegas Blvd N #1200, Las Vegas, NV 89101, USA",
-    "formattedAdress": "150 Las Vegas Blvd N #1200, Las Vegas, NV 89101, USA",
-    "latitude": 36.1699412,
-    "longitude": -115.1398296,
-    "streetNumber": "150",
-    "streetName": "Las Vegas Blvd N",
-    "city": "Las Vegas",
-    "county": "Clark County",
-    "state": "NV",
-    "country": "United States",
-    "countryCode": "US",
-    "zipCode": "89101"
-}
-*/
+
 
 default_shipping_address:{
-    /*
-    rawAddress : "",
-    address : "",
-    address2 : "",
-    city : "Las Vegas",
-    state : "Nevada",
-    postal : "89101",
-    country : "United States"
-    */
+    
     rawAddress: "",
     address: "USA",
     formattedAdress: "USA",
